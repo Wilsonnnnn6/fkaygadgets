@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Store - Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="index.html">Fkay Gadget Store</a>
+        <nav class="nav-links">
+          <a class="active" href="index.html">Home</a>
+          <a href="products.html">Listings</a>
+          <a href="cart.html">Cart <span data-cart-count class="badge">0</span></a>
+          <a href="delivery.html">Delivery</a>
+          <a href="payment.html">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-panel">
+            <h1>Latest iPhones at trusted prices</h1>
+            <p>
+              Shop from iPhone 6 up to the latest iPhone models. Add items to
+              cart, set delivery details, and pay securely with Flutterwave.
+            </p>
+            <a class="button button-primary" href="products.html">Browse Listings</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Featured Listings</h2>
+          <p class="section-copy">Popular picks from our current inventory.</p>
+          <div id="featured-products" class="products-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">Fkay Gadget Store</div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

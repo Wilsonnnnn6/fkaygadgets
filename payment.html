@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Store - Payment</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="index.html">Fkay Gadget Store</a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Listings</a>
+          <a href="cart.html">Cart <span data-cart-count class="badge">0</span></a>
+          <a href="delivery.html">Delivery</a>
+          <a class="active" href="payment.html">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <h1>Flutterwave Payment</h1>
+          <p class="muted">Secure checkout for your gadget order.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container layout-2">
+          <div class="card">
+            <h3>Order Total</h3>
+            <p class="price" id="payment-total">₦0</p>
+            <p class="muted">
+      
+            </p>
+            <button id="pay-now" class="button button-secondary" type="button">
+              Pay Now with Flutterwave
+            </button>
+            <p id="payment-status" class="success"></p>
+          </div>
+
+          <aside class="card">
+            <h3>Checklist</h3>
+            <p class="muted">Before payment, make sure you have:</p>
+            <ul class="muted">
+              <li>Added products to cart</li>
+              <li>Saved delivery details</li>
+              <li>Flutterwave safety </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">Fkay Gadget Store</div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

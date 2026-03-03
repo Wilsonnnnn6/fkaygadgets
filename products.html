@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Store - Listings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="index.html">Fkay Gadget Store</a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a class="active" href="products.html">Listings</a>
+          <a href="cart.html">Cart <span data-cart-count class="badge">0</span></a>
+          <a href="delivery.html">Delivery</a>
+          <a href="payment.html">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <h1>iPhone Listings (iPhone 6 to Latest)</h1>
+          <p class="muted">Blue and white gadget catalog with price tags.</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div id="listing-filters" class="card filters">
+            <div class="filters-grid">
+              <div>
+                <label for="search-filter">Search Model</label>
+                <input id="search-filter" type="text" placeholder="e.g. iPhone 13 Pro" />
+              </div>
+              <div>
+                <label for="year-filter">Model Year</label>
+                <select id="year-filter">
+                  <option value="">All years</option>
+                </select>
+              </div>
+              <div>
+                <label for="min-price">Min Price (NGN)</label>
+                <input id="min-price" type="number" min="0" step="1000" placeholder="0" />
+              </div>
+              <div>
+                <label for="max-price">Max Price (NGN)</label>
+                <input id="max-price" type="number" min="0" step="1000" placeholder="2500000" />
+              </div>
+            </div>
+            <div class="filters-actions">
+              <button id="clear-filters" class="button button-secondary" type="button">Clear Filters</button>
+              <p id="listing-count" class="muted">0 models shown</p>
+            </div>
+          </div>
+          <div id="all-products" class="products-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">Fkay Gadget Store</div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

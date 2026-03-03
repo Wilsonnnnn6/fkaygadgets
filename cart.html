@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gadget Store - Cart</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="index.html">Fkay Gadget Store</a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Listings</a>
+          <a class="active" href="cart.html">Cart <span data-cart-count class="badge">0</span></a>
+          <a href="delivery.html">Delivery</a>
+          <a href="payment.html">Payment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <h1>Your Cart</h1>
+          <p class="muted">Review selected phones and quantities.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container layout-2">
+          <div class="list">
+            <p id="cart-empty" class="muted">Your cart is empty.</p>
+            <div id="cart-items"></div>
+          </div>
+          <aside class="card summary">
+            <h3>Summary</h3>
+            <dl>
+              <div>
+                <dt>Total</dt>
+                <dd id="cart-total">₦0</dd>
+              </div>
+            </dl>
+            <div class="card-actions">
+              <button id="clear-cart" class="button button-danger">Clear Cart</button>
+              <a id="go-to-payment" class="button button-secondary" href="payment.html">Go to Payment</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">Fkay Gadget Store</div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
