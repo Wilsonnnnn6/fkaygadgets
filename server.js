@@ -24,27 +24,48 @@ function safeJoin(base, target) {
 }
 
 const server = http.createServer((req, res) => {
-  const reqPath = req.url === "/" ? "/index.html" : (req.url || "/index.html").split("?")[0];
-  const filePath = safeJoin(root, reqPath);
+  const rawPath = (req.url || "/").split("?")[0];
+  const reqPath = rawPath === "/" ? "/index.html" : rawPath;
+  const tryPaths = [reqPath];
 
-  if (!filePath.startsWith(root)) {
+  // Support clean routes on Render, e.g. /products -> /products.html
+  if (!path.extname(reqPath)) {
+    tryPaths.push(`${reqPath}.html`);
+    tryPaths.push(path.posix.join(reqPath, "index.html"));
+  }
+
+  const candidatePaths = tryPaths
+    .map((p) => safeJoin(root, p))
+    .filter((p) => p.startsWith(root));
+
+  if (!candidatePaths.length) {
     res.writeHead(403, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("Forbidden");
     return;
   }
 
-  fs.stat(filePath, (statErr, stat) => {
-    if (statErr || !stat.isFile()) {
+  const tryServe = (index) => {
+    if (index >= candidatePaths.length) {
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
       res.end("Not Found");
       return;
     }
 
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = mimeTypes[ext] || "application/octet-stream";
-    res.writeHead(200, { "Content-Type": contentType });
-    fs.createReadStream(filePath).pipe(res);
-  });
+    const filePath = candidatePaths[index];
+    fs.stat(filePath, (statErr, stat) => {
+      if (statErr || !stat.isFile()) {
+        tryServe(index + 1);
+        return;
+      }
+
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = mimeTypes[ext] || "application/octet-stream";
+      res.writeHead(200, { "Content-Type": contentType });
+      fs.createReadStream(filePath).pipe(res);
+    });
+  };
+
+  tryServe(0);
 });
 
 server.listen(port, () => {
